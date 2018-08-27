@@ -204,19 +204,6 @@ function Gdprx(options) {
 				required: true,
 				default: true,
 				info: "Used for a correct uer experience"
-			},
-			{
-				title: "Statistics",
-				cookies: [
-					"_ga",
-					"_gat",
-					"_gid",
-					"_gid#",
-					"collect"
-				],
-				required: false,
-				default: true,
-				info: "Used for site statistics and analitycs"
 			}
 		],
 		policies: [
@@ -224,12 +211,7 @@ function Gdprx(options) {
 				title: "Privacy policy",
 				info: "Privacy policy",
 				url: ""
-			},
-			{
-				title: "Cookie policy",
-				info: "Cookie policy",
-				url: ""
-			},
+			}
 		],
 		labels: {
 			panel_title: "Privacy preferences",
