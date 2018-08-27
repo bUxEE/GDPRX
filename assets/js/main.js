@@ -27,20 +27,20 @@ function Gdprx(options) {
 	}
 	
 	this.config = {
-		bar_text: "Questo sito web utilizza i cookie. Utilizziamo i cookie per personalizzare contenuti ed annunci, per fornire funzionalità dei social media e per analizzare il nostro traffico. Condividiamo inoltre informazioni sul modo in cui utilizza il nostro sito con i nostri partner che si occupano di analisi dei dati web, pubblicità e social media, i quali potrebbero combinarle con altre informazioni che ha fornito loro o che hanno raccolto dal suo utilizzo dei loro servizi. Acconsenta ai nostri cookie se continua ad utilizzare il nostro sito web.",
+		bar_text: "This site uses cookies, you can set you preferences through the settings panel",
 		cookie_groups: [
 			{
-				title: "Necessari",
+				title: "Required",
 				cookies: [
 					"phpsession",
 					"gdprx",
 				],
 				required: true,
 				default: true,
-				info: "Utilizzati per avere le corrette funzionalità del sito."
+				info: "Used for a correct uer experience"
 			},
 			{
-				title: "Statistica",
+				title: "Statistics",
 				cookies: [
 					"_ga",
 					"_gat",
@@ -50,31 +50,31 @@ function Gdprx(options) {
 				],
 				required: false,
 				default: true,
-				info: "Utilizzati per le statistiche del sito in modalità anonima ed il miglioramento dell'esperienza utente."
+				info: "Used for site statistics and analitycs"
 			}
 		],
 		policies: [
 			{
-				title: "policy1",
-				info: "Descrizione policy1",
-				url: "Url policy1"
+				title: "Privacy policy",
+				info: "Privacy policy",
+				url: ""
 			},
 			{
-				title: "policy2",
-				info: "Descrizione policy2",
-				url: "Url policy2"
+				title: "Cookie policy",
+				info: "Cookie policy",
+				url: ""
 			},
 		],
 		labels: {
-			panel_title: "Preferenze sulla privacy",
+			panel_title: "Privacy preferences",
 			cookies: "Cookies",
-			used_cookies: "Cookie utilizzati",
-			policies: "Informative",
-			required: "Necessari",
-			preferences: "Preferenze",
-			accept: "Accetto",
-			view: "Visualizza",
-			save: "Salva"
+			used_cookies: "Used cookies",
+			policies: "Policies",
+			required: "Required",
+			preferences: "Preferences",
+			accept: "Accept",
+			view: "View",
+			save: "Save"
 		},
 		ajax: {
 			enable: false,
