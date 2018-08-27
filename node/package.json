@@ -1,0 +1,18 @@
+{
+  "name": "gdprx",
+  "version": "1.0.0",
+  "description": "Jquery GDPR compliance consent",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "GDPR"
+  ],
+  "author": "woptima",
+  "license": "ISC",
+  "dependencies": {
+    "alertifyjs": "^1.11.1",
+    "js-cookie": "^2.2.0"
+  }
+}

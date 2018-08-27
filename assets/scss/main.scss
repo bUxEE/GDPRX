@@ -1,0 +1,341 @@
+$dark: #222425;
+$light: #f1f1f1;
+$blue: #00b9eb;
+$orange: #ffa500;
+$green: #2fca2f;
+$text: #455561;
+
+
+
+#gdprx-bar {
+	padding: 15px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transition: all 500ms;
+	transform: translateY(120%);
+	background: rgba(47, 47, 47, 0.9);
+	z-index: 99997;
+	&.active {
+		transform: translateY(0);
+	}
+	.content {
+		float: left;
+		width: 85%;
+		color: white;
+	}
+	.buttons {
+		text-align: center;
+		float: left;
+		width: 15%;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+#gdprx-modal {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0; 
+	left: 0;
+	transition: all 250ms;
+    background: rgba(0,0,0,0.65);
+    z-index: 99998;
+    opacity: 0;
+    display: none;
+    pointer-events: none;
+    .modal-content {
+    	position: absolute;
+    	top: 50%;
+		left: 50%;
+		transition: all 600ms;
+		transform: translate(-50%, -55%);
+		color: white;
+    	overflow-x: hidden;
+   		overflow-y: auto;
+   		width: 90%;
+	    max-width: 700px;
+	    max-height: 500px;
+	    background: $dark;
+	    z-index: 99999;
+	    pointer-events: auto;
+	    .title {
+	    	font-size: 26px;
+    		line-height: 33px;
+		    padding: 15px;
+		    text-align: center;
+		    background: $dark;
+		    position: relative;
+		    height: 65px;
+		    .close {
+		    	position: absolute;
+			    right: 0;
+			    top: 0;
+			    font-weight: 600;
+			    font-size: 17px;
+			    line-height: 30px;
+			    width: 30px;
+			    height: 30px;
+			    cursor: pointer;
+			    color: white;
+			    opacity: 1;
+		    }
+	    }
+		.cookies {
+			position: relative;
+			float: left;
+			width: 100%;
+			display: flex;
+		    align-content: stretch;
+		    height: calc(100% - 65px);
+		    box-sizing: border-box;
+			.navs {
+				width: 25%;
+		    	float: left;
+		    	display: flex;
+			    flex-direction: column;
+			    align-content: space-between;
+    			justify-content: space-between;
+		    	ul {
+		    		list-style: none;
+				    padding: 0;
+				    margin: 0;
+				    border: 0;
+				    width: 100%;
+				    li {
+				    	padding: 5px 10px;
+				    	font-size: 12px;
+				    	line-height: 12px;
+				    	width: 100%;
+				    	a {
+				    		color: #ccc;
+				    		text-decoration: none;
+				    		font-style: italic;
+				    		text-align: center;
+				    		&:hover, &.active, &:focus {
+								color: white;
+				    		}
+				    	}
+				    }
+				    &.policies {
+				    	margin-bottom: 10px;
+				    }
+				    &.cookies-nav {
+					    li {
+					    	color: white;
+					    	padding: 10px;
+					    	border-bottom: 1px solid white;
+					    	position: relative;
+					    	cursor: pointer;
+					    	background: lighten($dark, 10%);
+					    	text-align: left;
+					    	color: white;
+					    	font-size: 14px; 
+					    	line-height: 16px;
+					    	&.active {
+					    		background: $blue;
+					    		color: white;
+					    		&:hover, &:focus {
+									color: white !important;
+						    	}
+					    		&:after {
+									right: 0;
+								    border: 8px solid transparent;
+								    content: '';
+								    height: 0;
+								    width: 0;
+								    position: absolute;
+								    pointer-events: none;
+								    border-right-color: #f1f1f1;
+								    top: 50%;
+								    margin-top: -8px;
+					    		}
+					    	}
+					    	&:not(.list-title):hover, &:not(.list-title):focus {
+								color: $blue;
+					    	}
+					    }
+					}
+					&.cookie-list {
+						li {
+							padding-left: 25px;
+							background: lighten($dark, 20%);
+						}
+					}
+		    	}
+			}
+			.content {
+				width: 75%;
+				float: left;
+				padding: 15px;
+				background: $light;
+				position: relative;
+				color: $text;
+				.content-tab {
+					display: none;
+					transition: all 150ms;
+					&.active {
+						display: block;
+						opacity: 1;
+					}
+					.cookie-title {
+						font-size: 20px;
+					    font-weight: 600;
+					    margin-bottom: 15px;
+					}
+					.cookie-panel {
+						margin: 20px 0;
+    					border: 1px solid #ccc;
+    					.head {
+							padding: 10px;
+						    background: white;
+						    font-weight: 600;
+						    .switch {
+						    	float: right;
+						    }
+    					}
+    					.body {
+							padding: 10px;
+    					}
+					}
+				}
+				.buttons {
+					text-align: right;
+				}
+			}
+		}
+	}
+	&.visible {
+		display: block;
+	}
+	&.active {
+		opacity: 1;
+		.modal-content {
+			transform: translate(-50%, -50%);
+			opacity: 1;
+		}
+	}
+}
+
+.gdprx {
+	font-family: "Verdana";
+    font-size: 14px;
+    line-height: 1.2rem;
+	.buttons {
+		button, a {
+			background: transparent;
+		    outline: none;
+		    padding: 5px 10px;	    
+		    border-radius: 4px;
+		    cursor: pointer;
+		    margin: 7px;
+		    transition: all 150ms;
+		    text-decoration: none;
+		    &.preferences {
+				border: 1px solid $blue;
+		    	background: $blue;
+		    	color: white;
+		    	&:hover, &:active {
+		    		background: lighten($blue, 15%);
+		    	}
+		    } 
+		    &.view {
+				border: 1px solid $orange;
+		    	background: $orange;
+		    	color: white;
+		    	padding: 3px 7px;
+		    	&:hover, &:active {
+		    		background: lighten($orange, 15%);
+		    	}
+		    }
+		    &.accept, &.save {
+		    	border: 1px solid $green;
+		    	background: $green;
+		    	color: white;
+		    	&:hover, &:active {
+		    		background: lighten($green, 15%);
+		    	}
+		    }
+		}
+	}
+	.required-label {
+		background: $blue;
+	    color: white;
+	    padding: 5px 10px;
+	    border-radius: 30px;
+	    display: inline-block;
+	    font-size: 12px;
+	    line-height: 14px;
+	}
+	.gdprx-switch {
+		position: relative;
+	    display: inline-block;
+	    min-width: 45px;
+	    height: 24px;
+	    .gdpr-slider {
+	    	position: absolute;
+		    cursor: pointer;
+		    top: 0;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    background-color: #ccc;
+		    -webkit-transition: .4s;
+		    -o-transition: .4s;
+		    transition: .4s;
+	    	&.round {
+	    		border-radius: 34px;
+	    		&:before {
+	    			border-radius: 50%;
+	    		}
+	    	}
+	    	&:before {
+	    		position: absolute;
+			    content: "";
+			    height: 16px;
+			    width: 16px;
+			    left: 4px;
+			    bottom: 4px;
+			    background-color: white;
+			    -webkit-transition: .4s;
+			    -o-transition: .4s;
+			    transition: .4s;
+	    	}
+	    }
+	    .gdpr-switch-indicator, 
+	    .gdpr-switch-indicator-on,
+	    .gdpr-switch-indicator-off, 
+	    input:checked+.gdpr-slider+.gdpr-switch-indicator-on, 
+	    input:checked+.gdpr-slider+.gdpr-switch-indicator-on+.gdpr-switch-indicator-off {
+	    	position: absolute;
+		    bottom: 2px;
+		    right: 50px;
+		    color: #ccc;
+	    }
+	    .gdpr-switch-indicator-on {
+    		display: none;
+    	}
+	    input {
+	    	display: none;
+	    	&:checked+.gdpr-slider {
+	    		background-color: $blue;
+	    		&:before {
+	    			transform: translateX(21px);
+	    		}
+	    	}
+	    	&:checked+.gdpr-slider+.gdpr-switch-indicator-on {
+	    		color: $blue;
+    			display: block;
+	    	}
+	    	&:checked+.gdpr-slider+.gdpr-switch-indicator-on+.gdpr-switch-indicator-off {
+	    		display: none;
+	    	}
+	    } 
+	}
+}
+
+
