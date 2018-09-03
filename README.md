@@ -3,7 +3,7 @@ Simple javascript GDPR compliant Cookie and Policies consent handler
 
 Config options: 
 ```
-{
+var gdprx_options = {
 	bar_text: "This site uses cookies, you can set you preferences through the settings panel",
 	cookie_groups: [
 		{
@@ -65,9 +65,7 @@ Config options:
   simply initialize and pass custom options if needed.
   
   ```
-  jQuery(document).ready(function($) {
-      var gdprx = new Gdprx();
-  });
+  var gdprx = new Gdprx(gdprx_options);
   ```
   
   GDPRX will triger a DOM event when user accepts, to hook to it simply use:
@@ -77,4 +75,6 @@ Config options:
 	  ...your code here		
   });
   ```
+  Once initiated a global var will instantiated holding the user acceptance values: 
+  gdprxValues
   
