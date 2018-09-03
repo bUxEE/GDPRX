@@ -114,6 +114,7 @@ $text: #455561;
 				    	font-size: 12px;
 				    	line-height: 12px;
 				    	width: 100%;
+				    	margin: 0;
 				    	a {
 				    		color: #ccc;
 				    		text-decoration: none;
@@ -139,6 +140,7 @@ $text: #455561;
 					    	color: white;
 					    	font-size: 14px; 
 					    	line-height: 16px;
+					    	margin: 0;
 					    	&.active {
 					    		background: $blue;
 					    		color: white;
@@ -207,6 +209,11 @@ $text: #455561;
     					}
     					.body {
 							padding: 10px;
+							border: none;
+						    margin: 0;
+						    border-radius: 0;
+						    background: #f7f7f7;
+    						border-top: 1px solid #ccc;
     					}
 					}
 				}
@@ -242,6 +249,9 @@ $text: #455561;
 		    margin: 7px;
 		    transition: all 150ms;
 		    text-decoration: none;
+		    height: auto;
+		    line-height: 16px;
+		    font-size: 14px;
 		    &.preferences {
 				border: 1px solid $blue;
 		    	background: $blue;
@@ -283,6 +293,7 @@ $text: #455561;
 	    display: inline-block;
 	    min-width: 45px;
 	    height: 24px;
+	    margin: 0;
 	    .gdpr-slider {
 	    	position: absolute;
 		    cursor: pointer;
@@ -291,8 +302,6 @@ $text: #455561;
 		    right: 0;
 		    bottom: 0;
 		    background-color: #ccc;
-		    -webkit-transition: .4s;
-		    -o-transition: .4s;
 		    transition: .4s;
 	    	&.round {
 	    		border-radius: 34px;

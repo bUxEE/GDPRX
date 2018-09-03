@@ -169,6 +169,7 @@
   font-size: 12px;
   line-height: 12px;
   width: 100%;
+  margin: 0;
 }
 
 #gdprx-modal .modal-content .cookies .navs ul li a {
@@ -199,6 +200,7 @@
   color: white;
   font-size: 14px;
   line-height: 16px;
+  margin: 0;
 }
 
 #gdprx-modal .modal-content .cookies .navs ul.cookies-nav li.active {
@@ -283,6 +285,12 @@
 
 #gdprx-modal .modal-content .cookies .content .content-tab .cookie-panel .body {
   padding: 10px;
+  border: none;
+  margin: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+  background: #f7f7f7;
+  border-top: 1px solid #ccc;
 }
 
 #gdprx-modal .modal-content .cookies .content .buttons {
@@ -326,6 +334,9 @@
   -moz-transition: all 150ms;
   transition: all 150ms;
   text-decoration: none;
+  height: auto;
+  line-height: 16px;
+  font-size: 14px;
 }
 
 .gdprx .buttons button.preferences,
@@ -393,6 +404,7 @@
   display: inline-block;
   min-width: 45px;
   height: 24px;
+  margin: 0;
 }
 
 .gdprx .gdprx-switch .gdpr-slider {

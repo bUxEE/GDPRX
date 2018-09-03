@@ -171,6 +171,16 @@
  * Copyright 2018, Alberto Miconi
  * Released under the MIT license
  */
+
+var $ = jQuery.noConflict();
+
+function GdprxGetCookie() {
+	var cookieVal = Cookies.get('gdprx');
+	if(cookieVal != undefined) {
+		window.gdprxValues = JSON.parse(atob(Cookies.get('gdprx')));
+	}
+}
+
 function Gdprx(options) {
 
 	var $this 		 = this;
