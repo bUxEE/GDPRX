@@ -1,3 +1,4 @@
+
 /*!
  * Gdprx - Simple GDPR compliant cookie and policy consent v1.0.0
  * https://github.com/woptima/gdprx
@@ -7,6 +8,13 @@
  */
 
 var $ = jQuery.noConflict();
+
+function GdprxGetCookie() {
+	var cookieVal = Cookies.get('gdprx');
+	if(cookieVal != undefined) {
+		window.gdprxValues = JSON.parse(atob(Cookies.get('gdprx')));
+	}
+}
 
 function Gdprx(options) {
 
@@ -22,12 +30,12 @@ function Gdprx(options) {
 	this.init = function() {
 		$this.watchers();
 		$this.getCookie();
-		jQuery(document).ready(function($) {
-			$this.appendModal();
-			if(!$this.gdprxValues.accepted) {
-				$this.loadBar();
-			}
-		});	
+		$this.generateMarkup();
+		$this.appendModal();
+
+		if(!$this.gdprxValues.accepted) {
+			$this.loadBar();
+		}
 	}
 	
 	this.config = {
@@ -76,11 +84,7 @@ function Gdprx(options) {
 		if(group.required) {
 			return '<div class="required-label">' + $this.config.labels.required +'</div>';
 		} else {
-			if(group.value) {
-				var checked = value == true ? "checked" : "";
-			} else {
-				var checked = group.default == true ? "checked" : "";
-			}
+			var checked = group.default == true && $this.gdprxValues.cookiesDenied.indexOf(group.title) == -1 ? "checked" : "";
 			return  '<label class="gdprx-switch">' +
 						'<input type="checkbox" class="gdprx-cookie-check" data-group="' + group.title + '" name="cookies-' + group.title +'" '+ checked +'>' +
 						'<span class="gdpr-slider round"></span>' +
@@ -170,67 +174,71 @@ function Gdprx(options) {
 		return output;
 	}
 
-	this.bar = '<div id="gdprx-bar" class="gdprx">' +
-					'<div class="content">' + $this.config.bar_text + '</div>' +
-					'<div class="buttons">' +
-						'<button class="preferences">' + $this.config.labels.preferences + '</button>' +
-						'<button class="accept">' + $this.config.labels.accept + '</button>' +
-					'</div>' +
-				'</div>';
+	this.generateMarkup = function() {
+		$this.bar = '<div id="gdprx-bar" class="gdprx">' +
+								'<div class="content">' + $this.config.bar_text + '</div>' +
+								'<div class="buttons">' +
+									'<button class="preferences">' + $this.config.labels.preferences + '</button>' +
+									'<button class="accept">' + $this.config.labels.accept + '</button>' +
+								'</div>' +
+							'</div>';
 
-	this.modal = '<div id="gdprx-modal" class="gdprx">' +
-					'<div class="modal-content">' +
-						'<div class="title">' + $this.config.labels.panel_title + '<div class="close">X</div></div>' +
-						'<div class="cookies">' +
-							'<div class="navs">' +
-								'<ul class="cookies-nav">' +
-									$this.createPoliciesNav($this.config.policies) +
-									'<li class="list-title">' + $this.config.labels.cookies + '</li>' +
-									'<ul class="cookie-list">' +
-										$this.createCookieNav($this.config.cookie_groups) +
-									'</ul>' +
-								'</ul>' +
-								'<ul class="policies">' +
-									$this.createPoliciesLinks($this.config.policies) +
-								'</ul>'+
-							'</div>' +
-							'<div class="content">' +
-								$this.createPoliciesTab($this.config.policies) +
-								$this.createCookieTabs($this.config.cookie_groups) +
-								'<div class="buttons"><button class="btn save">' + $this.config.labels.save + '</button></div>';
-							'</div>' +
-						'</div>' +
-					'</div>' +
-				'</div>';
+		$this.modal = '<div id="gdprx-modal" class="gdprx">' +
+									'<div class="modal-content">' +
+										'<div class="title">' + $this.config.labels.panel_title + '<div class="close">X</div></div>' +
+										'<div class="cookies">' +
+											'<div class="navs">' +
+												'<ul class="cookies-nav">' +
+													$this.createPoliciesNav($this.config.policies) +
+													'<li class="list-title">' + $this.config.labels.cookies + '</li>' +
+													'<ul class="cookie-list">' +
+														$this.createCookieNav($this.config.cookie_groups) +
+													'</ul>' +
+												'</ul>' +
+												'<ul class="policies">' +
+													$this.createPoliciesLinks($this.config.policies) +
+												'</ul>'+
+											'</div>' +
+											'<div class="content">' +
+												$this.createPoliciesTab($this.config.policies) +
+												$this.createCookieTabs($this.config.cookie_groups) +
+												'<div class="buttons"><button class="btn save">' + $this.config.labels.save + '</button></div>';
+											'</div>' +
+										'</div>' +
+									'</div>' +
+								'</div>';
+	}
+	
 
 	this.watchers = function() {
 		// accept
-		$(document).on('click','#gdprx-bar button.accept', function(e) {
-			$this.accept()
-		});
-		// preferences
-		$(document).on('click','#gdprx-bar button.preferences', function(e) {
-			$this.openModal();
-		});
-		$(document).on('click','.gdprx-modal-opener', function(e) {
-			$this.openModal();
-		});
-		// close modal
-		$(document).on('click','#gdprx-modal .title .close', function(e) {
-			$this.closeModal();
-		});
-		// save preferences
-		$(document).on('click','#gdprx-modal .btn.save', function(e) {
-			$this.savePreferences();
-		});
-		// tabs
-		$(document).on('click','#gdprx-modal .cookies-nav li[data-content]', function(e) {
-			var btn 	= $(this);
-			var content = btn.attr('data-content');
-			$('#gdprx-modal .cookies-nav > li, #gdprx-modal .content-tab').removeClass('active');
-			btn.addClass('active');
-			$('#' + content).addClass('active');
-		});
+		$(document)
+			.on('click','#gdprx-bar button.accept', function(e) {
+				$this.accept()
+			})
+			// preferences
+			.on('click','#gdprx-bar button.preferences', function(e) {
+				$this.openModal();
+			})
+			.on('click','.gdprx-modal-opener', function(e) {
+				$this.openModal();
+			})
+			// close modal
+			.on('click','#gdprx-modal .title .close', function(e) {
+				$this.closeModal();
+			})
+			// save preferences
+			.on('click','#gdprx-modal .btn.save', function(e) {
+				$this.savePreferences();
+			})
+			// tabs
+			.on('click','#gdprx-modal .cookies-nav li[data-content]', function(e) {
+				var btn 	= $(this);
+				var content = btn.attr('data-content');
+				$('#gdprx-modal .cookies-nav > li, #gdprx-modal .content-tab').removeClass('active');
+				btn.addClass('active');
+				$('#' + content).addClass('active');
+			});
 	}
 
 	this.appendModal = function() {

@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "alertifyjs": "^1.11.1",
+    "gulp": "^3.8.8",
     "js-cookie": "^2.2.0"
   }
 }
