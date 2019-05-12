@@ -62,7 +62,7 @@ var gdprx_options = {
   ```
   Be sure to load Jquery before GDPRX
   
-  simply initialize and pass custom options if needed.
+  Add js and css files to your document and simply initialize and pass custom options if needed.
   
   ```
   var gdprx = new Gdprx(gdprx_options);
@@ -77,4 +77,6 @@ var gdprx_options = {
   ```
   Once initiated a global var will instantiated holding the user acceptance values: 
   gdprxValues
+  
+  You can create a button with class ```.gdprx-modal-opener``` to toggle the preferences panel
   
