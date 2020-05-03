@@ -14,7 +14,7 @@ var gdprx_options = {
 			],
 			required: true,
 			default: true,
-			info: "Used for a correct uer experience"
+			info: "Necessary for a correct user experience"
 		},
 		{
 			title: "Statistics",
