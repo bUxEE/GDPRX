@@ -1,0 +1,25 @@
+{
+  "name": "gdprx",
+  "version": "1.0.0",
+  "description": "GDPR compliant cookie bar",
+  "main": "dist/gdprx.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bux23/GDPRX.git"
+  },
+  "keywords": [
+    "GDPR"
+  ],
+  "author": "Woptima",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bux23/GDPRX/issues"
+  },
+  "homepage": "https://github.com/bux23/GDPRX#readme",
+  "dependencies": {
+    "js-cookie": "^2.2.1"
+  }
+}
