@@ -1,28 +1,28 @@
 {
-  "_from": "gdprx",
-  "_id": "gdprx@1.0.0",
+  "_from": "gdprx@1.1.0",
+  "_id": "gdprx@1.1.0",
   "_inBundle": false,
-  "_integrity": "sha512-Kw2Kp6mVnPdHvIaAYolEWvqRO9M8+GR0tCOuaUnxT9DiZ0xVgNcW5BvBrWs27hLNyHcOJ1BIg3HJ7fKmXWNYvg==",
+  "_integrity": "sha512-33N4PtuQC6V3c7Qo+mH4+XjtlYWZsX3yn5JVt6Q0quAeLRlQMNo8GJOZe3aPt9ZqjRzvMOiaCcYzJ6ThVcKIKQ==",
   "_location": "/gdprx",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "version",
     "registry": true,
-    "raw": "gdprx",
+    "raw": "gdprx@1.1.0",
     "name": "gdprx",
     "escapedName": "gdprx",
-    "rawSpec": "",
+    "rawSpec": "1.1.0",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "1.1.0"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/gdprx/-/gdprx-1.0.0.tgz",
-  "_shasum": "ec4b7575cc46a8701b8254fd6c830abc16f32fc9",
-  "_spec": "gdprx",
-  "_where": "C:\\WEB\\WOPTIMA\\landing\\V2\\node",
+  "_resolved": "https://registry.npmjs.org/gdprx/-/gdprx-1.1.0.tgz",
+  "_shasum": "294e1590ac4e677a55cdf8487eb7028a2166d0d7",
+  "_spec": "gdprx@1.1.0",
+  "_where": "C:\\WEB\\WOPTIMA\\landing\\V2",
   "author": {
     "name": "Woptima"
   },
