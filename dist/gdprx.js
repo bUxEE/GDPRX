@@ -251,7 +251,8 @@ class Gdprx {
 		})
 		// tabs
 		.on('click','#gdprx-modal .cookies-nav li[data-content]', (e) => {
-			let btn 	= jQuery(this);
+			console.log("clicked");
+			let btn = jQuery(e.currentTarget);
 			let content = btn.attr('data-content');
 			jQuery('#gdprx-modal .cookies-nav > li, #gdprx-modal .content-tab').removeClass('active');
 			btn.addClass('active');
@@ -326,7 +327,7 @@ class Gdprx {
 		});
 
 		jQuery('input.gdprx-cookie-check').each((index, el) => {
-			let check  = jQuery(this);
+			let check  = jQuery(el);
 			let group  = check.attr('data-group'); 
 			if(check.is(':checked')) {
 				this.gdprxValues.cookiesAccepted.push(group);

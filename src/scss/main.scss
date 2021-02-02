@@ -138,7 +138,7 @@ $app-colors: map-merge((
 					    	border-bottom: 1px solid white;
 					    	position: relative;
 					    	cursor: pointer;
-					    	background: lighten(map-get($app-colors, 'dark'), 10%);
+					    	background: lighten(map-get($app-colors, 'dark'), 3%);
 					    	text-align: left;
 					    	color: white;
 					    	font-size: 14px; 
@@ -171,7 +171,7 @@ $app-colors: map-merge((
 					&.cookie-list {
 						li {
 							padding-left: 25px;
-							background: lighten(map-get($app-colors, 'dark'), 20%);
+							background: lighten(map-get($app-colors, 'dark'), 7%);
 						}
 					}
 		    	}
@@ -200,8 +200,8 @@ $app-colors: map-merge((
 						margin: 20px 0;
     					border: 1px solid #ccc;
     					.head {
-							padding: 10px;
-						    background: white;
+								padding: 10px;
+						    background: map-get($app-colors, 'dark');
 						    font-weight: 600;
 						    display: inline-block;
 						    width: 100%;
@@ -211,11 +211,11 @@ $app-colors: map-merge((
 						    }
     					}
     					.body {
-							padding: 10px;
-							border: none;
+								padding: 10px;
+								border: none;
 						    margin: 0;
 						    border-radius: 0;
-						    background: #f7f7f7;
+						    background: lighten(map-get($app-colors, 'dark'), 7%);
     						border-top: 1px solid #ccc;
     					}
 					}
