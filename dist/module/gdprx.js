@@ -7,7 +7,7 @@
 * Released under the MIT license
 */
 
-class Gdprx {
+export default class Gdprx {
 	
 	constructor(options) {
 		this.cookieName	= "gdprx";

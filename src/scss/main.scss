@@ -1,10 +1,11 @@
-$dark: #222425;
-$light: #f1f1f1;
-$blue: #289dcc;
-$orange: #ff9c36;
-$green: #41b883;
-$text: #455561;
-
+$app-colors: map-merge((
+  "dark":    '#222425',
+  "light":   '#f1f1f1',
+  "blue":    '#289dcc',
+  "orange":  '#ff9c36',
+  "green":   '#41b883',
+  "text":    '#455561',
+), $app-colors);
 
 
 #gdprx-bar {
@@ -65,7 +66,7 @@ $text: #455561;
    		width: 90%;
 	    max-width: 700px;
 	    max-height: 500px;
-	    background: $dark;
+	    background: map-get($app-colors, 'dark');
 	    z-index: 99999;
 	    pointer-events: auto;
 	    .title {
@@ -73,7 +74,7 @@ $text: #455561;
     		line-height: 33px;
 		    padding: 15px;
 		    text-align: center;
-		    background: $dark;
+		    background: map-get($app-colors, 'dark');
 		    position: relative;
 		    height: 65px;
 		    .close {
@@ -137,14 +138,14 @@ $text: #455561;
 					    	border-bottom: 1px solid white;
 					    	position: relative;
 					    	cursor: pointer;
-					    	background: lighten($dark, 10%);
+					    	background: lighten(map-get($app-colors, 'dark'), 10%);
 					    	text-align: left;
 					    	color: white;
 					    	font-size: 14px; 
 					    	line-height: 16px;
 					    	margin: 0;
 					    	&.active {
-					    		background: $blue;
+					    		background: map-get($app-colors, 'blue');
 					    		color: white;
 					    		&:hover, &:focus {
 									color: white !important;
@@ -163,14 +164,14 @@ $text: #455561;
 					    		}
 					    	}
 					    	&:not(.list-title):hover, &:not(.list-title):focus {
-								color: $blue;
+								color: map-get($app-colors, 'blue');
 					    	}
 					    }
 					}
 					&.cookie-list {
 						li {
 							padding-left: 25px;
-							background: lighten($dark, 20%);
+							background: lighten(map-get($app-colors, 'dark'), 20%);
 						}
 					}
 		    	}
@@ -179,9 +180,9 @@ $text: #455561;
 				width: 75%;
 				float: left;
 				padding: 15px;
-				background: $light;
+				background: map-get($app-colors, 'light');
 				position: relative;
-				color: $text;
+				color: map-get($app-colors, 'text');
 				margin: 0;
 				.content-tab {
 					display: none;
@@ -255,35 +256,35 @@ $text: #455561;
 		    line-height: 16px;
 		    font-size: 14px;
 		    &.preferences {
-				border: 1px solid $blue;
-		    	background: $blue;
+				border: 1px solid map-get($app-colors, 'blue');
+		    	background: map-get($app-colors, 'blue');
 		    	color: white;
 		    	&:hover, &:active {
-		    		background: lighten($blue, 15%);
+		    		background: lighten(map-get($app-colors, 'blue'), 15%);
 		    	}
 		    } 
 		    &.view {
-					border: 1px solid $orange;
-					background: $orange;
+					border: 1px solid map-get($app-colors, 'orange');
+					background: map-get($app-colors, 'orange');
 					color: white;
 					padding: 3px 7px;
 					margin-right: 0;
 					&:hover, &:active {
-						background: lighten($orange, 15%);
+						background: lighten(map-get($app-colors, 'orange'), 15%);
 					}
 		    }
 		    &.accept, &.save {
-		    	border: 1px solid $green;
-		    	background: $green;
+		    	border: 1px solid map-get($app-colors, 'green');
+		    	background: map-get($app-colors, 'green');
 		    	color: white;
 		    	&:hover, &:active {
-		    		background: lighten($green, 15%);
+		    		background: lighten(map-get($app-colors, 'green'), 15%);
 		    	}
 		    }
 		}
 	}
 	.required-label {
-		background: $blue;
+		background: map-get($app-colors, 'blue');
 	    color: white;
 	    padding: 5px 10px;
 	    border-radius: 30px;
@@ -341,13 +342,13 @@ $text: #455561;
 	    input {
 	    	display: none;
 	    	&:checked+.gdpr-slider {
-	    		background-color: $blue;
+	    		background-color: map-get($app-colors, 'blue');
 	    		&:before {
 	    			transform: translateX(21px);
 	    		}
 	    	}
 	    	&:checked+.gdpr-slider+.gdpr-switch-indicator-on {
-	    		color: $blue;
+	    		color: map-get($app-colors, 'blue');
     			display: block;
 	    	}
 	    	&:checked+.gdpr-slider+.gdpr-switch-indicator-on+.gdpr-switch-indicator-off {
