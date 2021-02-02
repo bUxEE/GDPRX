@@ -202,7 +202,8 @@ export default class Gdprx {
 		'</div>';
 
 		this.modal = '<div id="gdprx-modal" class="gdprx">' +
-		'<div class="modal-content">' +
+		'<div class="main-content">' +
+		'<div class="content-inner">' +
 		'<div class="title">' + this.config.labels.panel_title + '<div class="close">X</div></div>' +
 		'<div class="cookies">' +
 		'<div class="navs">' +

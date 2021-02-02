@@ -1,441 +1,376 @@
 #gdprx-bar {
-  padding: 15px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  -webkit-transition: all 500ms;
-          transition: all 500ms;
-  -webkit-transform: translateY(120%);
-      -ms-transform: translateY(120%);
-          transform: translateY(120%);
-  background: rgba(47, 47, 47, 0.9);
-  z-index: 99997;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+   padding: 15px;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   transition: all 500ms;
+   transform: translateY(120%);
+   background: rgba(47, 47, 47, 0.9);
+   z-index: 99997;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
 }
-#gdprx-bar.active {
-  -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-          transform: translateY(0);
+ #gdprx-bar.active {
+   transform: translateY(0);
 }
-#gdprx-bar .content {
-  color: white;
-  padding: 0;
-  margin: 0;
-  line-height: 16px;
-  -webkit-box-flex: 3;
-  -webkit-flex: 3;
-      -ms-flex: 3;
-          flex: 3;
+ #gdprx-bar .content {
+   color: white;
+   padding: 0;
+   margin: 0;
+   line-height: 16px;
+   flex: 3;
 }
-#gdprx-bar .buttons {
-  text-align: right;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  white-space: nowrap;
+ #gdprx-bar .buttons {
+   text-align: right;
+   flex: 1;
+   white-space: nowrap;
 }
-
-* {
-  box-sizing: border-box;
+ * {
+   box-sizing: border-box;
 }
-
-#gdprx-modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  -webkit-transition: all 250ms;
-          transition: all 250ms;
-  background: rgba(0, 0, 0, 0.65);
-  z-index: 99998;
-  opacity: 0;
-  display: none;
-  pointer-events: none;
+ #gdprx-modal {
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   transition: all 250ms;
+   background: rgba(0, 0, 0, 0.65);
+   z-index: 99998;
+   opacity: 0;
+   display: none;
+   pointer-events: none;
 }
-#gdprx-modal .modal-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transition: all 600ms;
-          transition: all 600ms;
-  -webkit-transform: translate(-50%, -55%);
-      -ms-transform: translate(-50%, -55%);
-          transform: translate(-50%, -55%);
-  color: white;
-  overflow-x: hidden;
-  overflow-y: auto;
-  width: 90%;
-  max-width: 700px;
-  max-height: 500px;
-  background: #222425;
-  z-index: 99999;
-  pointer-events: auto;
+ #gdprx-modal .main-content {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transition: all 600ms;
+   transform: translate(-50%, -55%);
+   max-height: calc(100vh - 50px);
+   max-width: calc(100vw - 50px);
+   width: 650px;
+   pointer-events: auto;
+   overflow: auto;
 }
-#gdprx-modal .modal-content .title {
-  font-size: 26px;
-  line-height: 33px;
-  padding: 15px;
-  text-align: center;
-  background: #222425;
-  position: relative;
-  height: 65px;
+ #gdprx-modal .main-content .content-inner {
+   color: white;
+   overflow-x: hidden;
+   overflow-y: auto;
+   width: 100%;
+   background: #222425;
+   z-index: 99999;
 }
-#gdprx-modal .modal-content .title .close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  font-weight: 600;
-  font-size: 17px;
-  line-height: 30px;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  color: white;
-  opacity: 1;
+ #gdprx-modal .main-content .title {
+   font-size: 26px;
+   line-height: 33px;
+   padding: 15px;
+   text-align: center;
+   background: #222425;
+   position: relative;
+   height: 65px;
 }
-#gdprx-modal .modal-content .cookies {
-  position: relative;
-  float: left;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-content: stretch;
-      -ms-flex-line-pack: stretch;
-          align-content: stretch;
-  height: calc(100% - 65px);
-  box-sizing: border-box;
+ #gdprx-modal .main-content .title .close {
+   position: absolute;
+   right: 0;
+   top: 0;
+   font-weight: 600;
+   font-size: 17px;
+   line-height: 30px;
+   width: 30px;
+   height: 30px;
+   cursor: pointer;
+   color: white;
+   opacity: 1;
 }
-#gdprx-modal .modal-content .cookies .navs {
-  width: 25%;
-  float: left;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-align-content: space-between;
-      -ms-flex-line-pack: justify;
-          align-content: space-between;
-  -webkit-box-pack: justify;
-  -webkit-justify-content: space-between;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+ #gdprx-modal .main-content .cookies {
+   position: relative;
+   float: left;
+   width: 100%;
+   display: flex;
+   align-content: stretch;
+   height: calc(100% - 65px);
+   box-sizing: border-box;
 }
-#gdprx-modal .modal-content .cookies .navs ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  width: 100%;
+ #gdprx-modal .main-content .cookies .navs {
+   width: 25%;
+   float: left;
+   display: flex;
+   flex-direction: column;
+   align-content: space-between;
+   justify-content: space-between;
 }
-#gdprx-modal .modal-content .cookies .navs ul li {
-  padding: 5px 10px;
-  font-size: 12px;
-  line-height: 12px;
-  width: 100%;
-  margin: 0;
+ #gdprx-modal .main-content .cookies .navs ul {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   border: 0;
+   width: 100%;
 }
-#gdprx-modal .modal-content .cookies .navs ul li a {
-  color: #ccc;
-  text-decoration: none;
-  font-style: italic;
-  text-align: center;
+ #gdprx-modal .main-content .cookies .navs ul li {
+   padding: 5px 10px;
+   font-size: 12px;
+   line-height: 12px;
+   width: 100%;
+   margin: 0;
 }
-#gdprx-modal .modal-content .cookies .navs ul li a:hover, #gdprx-modal .modal-content .cookies .navs ul li a.active, #gdprx-modal .modal-content .cookies .navs ul li a:focus {
-  color: white;
+ #gdprx-modal .main-content .cookies .navs ul li a {
+   color: #ccc;
+   text-decoration: none;
+   font-style: italic;
+   text-align: center;
 }
-#gdprx-modal .modal-content .cookies .navs ul.policies {
-  margin-bottom: 10px;
+ #gdprx-modal .main-content .cookies .navs ul li a:hover, #gdprx-modal .main-content .cookies .navs ul li a.active, #gdprx-modal .main-content .cookies .navs ul li a:focus {
+   color: white;
 }
-#gdprx-modal .modal-content .cookies .navs ul.cookies-nav li {
-  color: white;
-  padding: 10px;
-  border-bottom: 1px solid white;
-  position: relative;
-  cursor: pointer;
-  background: #3a3e40;
-  text-align: left;
-  color: white;
-  font-size: 14px;
-  line-height: 16px;
-  margin: 0;
+ #gdprx-modal .main-content .cookies .navs ul.policies {
+   margin-bottom: 10px;
 }
-#gdprx-modal .modal-content .cookies .navs ul.cookies-nav li.active {
-  background: #289dcc;
-  color: white;
+ #gdprx-modal .main-content .cookies .navs ul.policies a {
+   text-align: left;
 }
-#gdprx-modal .modal-content .cookies .navs ul.cookies-nav li.active:hover, #gdprx-modal .modal-content .cookies .navs ul.cookies-nav li.active:focus {
-  color: white !important;
+ #gdprx-modal .main-content .cookies .navs ul.cookies-nav li {
+   color: white;
+   padding: 10px;
+   border-bottom: 1px solid white;
+   position: relative;
+   cursor: pointer;
+   background: #292c2d;
+   text-align: left;
+   color: white;
+   font-size: 14px;
+   line-height: 16px;
+   margin: 0;
 }
-#gdprx-modal .modal-content .cookies .navs ul.cookies-nav li.active:after {
-  right: 0;
-  border: 8px solid transparent;
-  content: "";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-right-color: #f1f1f1;
-  top: 50%;
-  margin-top: -8px;
+ #gdprx-modal .main-content .cookies .navs ul.cookies-nav li.active {
+   background: #289dcc;
+   color: white;
 }
-#gdprx-modal .modal-content .cookies .navs ul.cookies-nav li:not(.list-title):hover, #gdprx-modal .modal-content .cookies .navs ul.cookies-nav li:not(.list-title):focus {
-  color: #289dcc;
+ #gdprx-modal .main-content .cookies .navs ul.cookies-nav li.active:hover, #gdprx-modal .main-content .cookies .navs ul.cookies-nav li.active:focus {
+   color: white !important;
 }
-#gdprx-modal .modal-content .cookies .navs ul.cookie-list li {
-  padding-left: 25px;
-  background: #53585a;
+ #gdprx-modal .main-content .cookies .navs ul.cookies-nav li.active:after {
+   right: 0;
+   border: 8px solid transparent;
+   content: '';
+   height: 0;
+   width: 0;
+   position: absolute;
+   pointer-events: none;
+   border-right-color: #f1f1f1;
+   top: 50%;
+   margin-top: -8px;
 }
-#gdprx-modal .modal-content .cookies .content {
-  width: 75%;
-  float: left;
-  padding: 15px;
-  background: #f1f1f1;
-  position: relative;
-  color: #455561;
-  margin: 0;
+ #gdprx-modal .main-content .cookies .navs ul.cookies-nav li:not(.list-title):hover, #gdprx-modal .main-content .cookies .navs ul.cookies-nav li:not(.list-title):focus {
+   color: #289dcc;
 }
-#gdprx-modal .modal-content .cookies .content .content-tab {
-  display: none;
-  -webkit-transition: all 150ms;
-          transition: all 150ms;
+ #gdprx-modal .main-content .cookies .navs ul.cookie-list li {
+   padding-left: 25px;
+   background: #333638;
 }
-#gdprx-modal .modal-content .cookies .content .content-tab.active {
-  display: block;
-  opacity: 1;
+ #gdprx-modal .main-content .cookies .content {
+   width: 75%;
+   float: left;
+   padding: 15px;
+   min-height: 400px;
+   background: #292c2d;
+   position: relative;
+   color: #455561;
+   margin: 0;
 }
-#gdprx-modal .modal-content .cookies .content .content-tab .cookie-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 15px;
+ #gdprx-modal .main-content .cookies .content .content-tab {
+   display: none;
+   transition: all 150ms;
 }
-#gdprx-modal .modal-content .cookies .content .content-tab .cookie-panel {
-  margin: 20px 0;
-  border: 1px solid #ccc;
+ #gdprx-modal .main-content .cookies .content .content-tab.active {
+   display: block;
+   opacity: 1;
 }
-#gdprx-modal .modal-content .cookies .content .content-tab .cookie-panel .head {
-  padding: 10px;
-  background: white;
-  font-weight: 600;
-  display: inline-block;
-  width: 100%;
-  line-height: 21px;
+ #gdprx-modal .main-content .cookies .content .content-tab .cookie-title {
+   font-size: 20px;
+   font-weight: 600;
+   margin-bottom: 15px;
 }
-#gdprx-modal .modal-content .cookies .content .content-tab .cookie-panel .head .switch {
-  float: right;
+ #gdprx-modal .main-content .cookies .content .content-tab .cookie-panel {
+   margin: 20px 0;
+   border: 1px solid #ccc;
 }
-#gdprx-modal .modal-content .cookies .content .content-tab .cookie-panel .body {
-  padding: 10px;
-  border: none;
-  margin: 0;
-  border-radius: 0;
-  background: #f7f7f7;
-  border-top: 1px solid #ccc;
+ #gdprx-modal .main-content .cookies .content .content-tab .cookie-panel .head {
+   padding: 10px;
+   background: #222425;
+   font-weight: 600;
+   display: inline-block;
+   width: 100%;
+   line-height: 21px;
 }
-#gdprx-modal .modal-content .cookies .content .buttons {
-  text-align: right;
+ #gdprx-modal .main-content .cookies .content .content-tab .cookie-panel .head .switch {
+   float: right;
 }
-#gdprx-modal.visible {
-  display: block;
+ #gdprx-modal .main-content .cookies .content .content-tab .cookie-panel .body {
+   padding: 10px;
+   border: none;
+   margin: 0;
+   border-radius: 0;
+   background: #333638;
+   border-top: 1px solid #ccc;
 }
-#gdprx-modal.active {
-  opacity: 1;
+ #gdprx-modal .main-content .cookies .content .buttons {
+   text-align: right;
 }
-#gdprx-modal.active .modal-content {
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  opacity: 1;
+ #gdprx-modal.visible {
+   display: block;
 }
-
-.gdprx {
-  font-family: "Verdana";
-  font-size: 14px;
-  line-height: 1.2rem;
+ #gdprx-modal.active {
+   opacity: 1;
 }
-.gdprx .buttons button, .gdprx .buttons a {
-  background: transparent;
-  outline: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  margin: 7px;
-  -webkit-transition: all 150ms;
-          transition: all 150ms;
-  text-decoration: none;
-  height: auto;
-  line-height: 16px;
-  font-size: 14px;
+ #gdprx-modal.active .main-content {
+   transform: translate(-50%, -50%);
+   opacity: 1;
 }
-.gdprx .buttons button.preferences, .gdprx .buttons a.preferences {
-  border: 1px solid #289dcc;
-  background: #289dcc;
-  color: white;
+ .gdprx {
+   font-family: "Verdana";
+   font-size: 14px;
+   line-height: 1.2rem;
 }
-.gdprx .buttons button.preferences:hover, .gdprx .buttons button.preferences:active, .gdprx .buttons a.preferences:hover, .gdprx .buttons a.preferences:active {
-  background: #61bbe0;
+ .gdprx .buttons button, .gdprx .buttons a {
+   background: transparent;
+   outline: none;
+   padding: 5px 10px;
+   border-radius: 4px;
+   cursor: pointer;
+   margin: 7px;
+   transition: all 150ms;
+   text-decoration: none;
+   height: auto;
+   line-height: 16px;
+   font-size: 14px;
 }
-.gdprx .buttons button.view, .gdprx .buttons a.view {
-  border: 1px solid #ff9c36;
-  background: #ff9c36;
-  color: white;
-  padding: 3px 7px;
-  margin-right: 0;
+ .gdprx .buttons button.preferences, .gdprx .buttons a.preferences {
+   border: 1px solid #289dcc;
+   background: #289dcc;
+   color: white;
 }
-.gdprx .buttons button.view:hover, .gdprx .buttons button.view:active, .gdprx .buttons a.view:hover, .gdprx .buttons a.view:active {
-  background: #ffc283;
+ .gdprx .buttons button.preferences:hover, .gdprx .buttons a.preferences:hover, .gdprx .buttons button.preferences:active, .gdprx .buttons a.preferences:active {
+   background: #61bbe0;
 }
-.gdprx .buttons button.accept, .gdprx .buttons button.save, .gdprx .buttons a.accept, .gdprx .buttons a.save {
-  border: 1px solid #41b883;
-  background: #41b883;
-  color: white;
+ .gdprx .buttons button.view, .gdprx .buttons a.view {
+   border: 1px solid #ff9c36;
+   background: #ff9c36;
+   color: white;
+   padding: 3px 7px;
+   margin-right: 0;
 }
-.gdprx .buttons button.accept:hover, .gdprx .buttons button.accept:active, .gdprx .buttons button.save:hover, .gdprx .buttons button.save:active, .gdprx .buttons a.accept:hover, .gdprx .buttons a.accept:active, .gdprx .buttons a.save:hover, .gdprx .buttons a.save:active {
-  background: #77cfa8;
+ .gdprx .buttons button.view:hover, .gdprx .buttons a.view:hover, .gdprx .buttons button.view:active, .gdprx .buttons a.view:active {
+   background: #ffc283;
 }
-.gdprx .required-label {
-  background: #289dcc;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 30px;
-  display: inline-block;
-  font-size: 12px;
-  line-height: 14px;
+ .gdprx .buttons button.accept, .gdprx .buttons a.accept, .gdprx .buttons button.save, .gdprx .buttons a.save {
+   border: 1px solid #41b883;
+   background: #41b883;
+   color: white;
 }
-.gdprx .gdprx-switch {
-  position: relative;
-  display: inline-block;
-  min-width: 45px;
-  height: 24px;
-  margin: 0;
+ .gdprx .buttons button.accept:hover, .gdprx .buttons a.accept:hover, .gdprx .buttons button.save:hover, .gdprx .buttons a.save:hover, .gdprx .buttons button.accept:active, .gdprx .buttons a.accept:active, .gdprx .buttons button.save:active, .gdprx .buttons a.save:active {
+   background: #77cfa8;
 }
-.gdprx .gdprx-switch .gdpr-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: 0.4s;
-          transition: 0.4s;
+ .gdprx .required-label {
+   background: #289dcc;
+   color: white;
+   padding: 5px 10px;
+   border-radius: 30px;
+   display: inline-block;
+   font-size: 12px;
+   line-height: 14px;
 }
-.gdprx .gdprx-switch .gdpr-slider.round {
-  border-radius: 34px;
+ .gdprx .gdprx-switch {
+   position: relative;
+   display: inline-block;
+   min-width: 45px;
+   height: 24px;
+   margin: 0;
 }
-.gdprx .gdprx-switch .gdpr-slider.round:before {
-  border-radius: 50%;
+ .gdprx .gdprx-switch .gdpr-slider {
+   position: absolute;
+   cursor: pointer;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: #ccc;
+   transition: 0.4s;
 }
-.gdprx .gdprx-switch .gdpr-slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+ .gdprx .gdprx-switch .gdpr-slider.round {
+   border-radius: 34px;
 }
-.gdprx .gdprx-switch .gdpr-switch-indicator,
-.gdprx .gdprx-switch .gdpr-switch-indicator-on,
-.gdprx .gdprx-switch .gdpr-switch-indicator-off,
-.gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on,
-.gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on + .gdpr-switch-indicator-off {
-  position: absolute;
-  bottom: 2px;
-  right: 50px;
-  color: #ccc;
+ .gdprx .gdprx-switch .gdpr-slider.round:before {
+   border-radius: 50%;
 }
-.gdprx .gdprx-switch .gdpr-switch-indicator-on {
-  display: none;
+ .gdprx .gdprx-switch .gdpr-slider:before {
+   position: absolute;
+   content: "";
+   height: 16px;
+   width: 16px;
+   left: 4px;
+   bottom: 4px;
+   background-color: white;
+   -webkit-transition: 0.4s;
+   -o-transition: 0.4s;
+   transition: 0.4s;
 }
-.gdprx .gdprx-switch input {
-  display: none;
+ .gdprx .gdprx-switch .gdpr-switch-indicator, .gdprx .gdprx-switch .gdpr-switch-indicator-on, .gdprx .gdprx-switch .gdpr-switch-indicator-off, .gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on, .gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on + .gdpr-switch-indicator-off {
+   position: absolute;
+   bottom: 2px;
+   right: 50px;
+   color: #ccc;
 }
-.gdprx .gdprx-switch input:checked + .gdpr-slider {
-  background-color: #289dcc;
+ .gdprx .gdprx-switch .gdpr-switch-indicator-on {
+   display: none;
 }
-.gdprx .gdprx-switch input:checked + .gdpr-slider:before {
-  -webkit-transform: translateX(21px);
-      -ms-transform: translateX(21px);
-          transform: translateX(21px);
+ .gdprx .gdprx-switch input {
+   display: none;
 }
-.gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on {
-  color: #289dcc;
-  display: block;
+ .gdprx .gdprx-switch input:checked + .gdpr-slider {
+   background-color: #289dcc;
 }
-.gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on + .gdpr-switch-indicator-off {
-  display: none;
+ .gdprx .gdprx-switch input:checked + .gdpr-slider:before {
+   transform: translateX(21px);
 }
-
-@media only screen and (max-width: 768px) {
-  #gdprx-bar {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column;
+ .gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on {
+   color: #289dcc;
+   display: block;
+}
+ .gdprx .gdprx-switch input:checked + .gdpr-slider + .gdpr-switch-indicator-on + .gdpr-switch-indicator-off {
+   display: none;
+}
+ @media only screen and (max-width: 768px) {
+   #gdprx-bar {
+     flex-direction: column;
   }
-  #gdprx-bar .content {
-    display: block;
-    width: 100%;
+   #gdprx-bar .content {
+     display: block;
+     width: 100%;
   }
-  #gdprx-bar .buttons {
-    display: block;
-    width: 100%;
-    text-align: center;
-    margin-top: 7px;
+   #gdprx-bar .buttons {
+     display: block;
+     width: 100%;
+     text-align: center;
+     margin-top: 7px;
   }
-
-  #gdprx-modal .modal-content .title {
-    height: auto;
+   #gdprx-modal .main-content .title {
+     height: auto;
   }
-  #gdprx-modal .modal-content .cookies .navs {
-    width: 35%;
+   #gdprx-modal .main-content .cookies .navs {
+     width: 35%;
   }
-  #gdprx-modal .cookies .content .content-tab .cookie-panel .head {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-    -webkit-flex-direction: column-reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
+   #gdprx-modal .cookies .content .content-tab .cookie-panel .head {
+     display: flex;
+     flex-direction: column-reverse;
+     justify-content: flex-end;
   }
-  #gdprx-modal .cookies .content .content-tab .cookie-panel .head .switch {
-    -webkit-align-self: flex-end;
-        -ms-flex-item-align: end;
-            align-self: flex-end;
-    margin: -10px -15px 0 0;
-    -webkit-transform: scale(0.7);
-        -ms-transform: scale(0.7);
-            transform: scale(0.7);
+   #gdprx-modal .cookies .content .content-tab .cookie-panel .head .switch {
+     align-self: flex-end;
+     margin: -10px -15px 0 0;
+     transform: scale(0.7);
   }
 }
+ 
