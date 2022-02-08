@@ -1,50 +1,50 @@
 {
-  "_from": "gdprx@1.1.0",
-  "_id": "gdprx@1.1.0",
-  "_inBundle": false,
-  "_integrity": "sha512-33N4PtuQC6V3c7Qo+mH4+XjtlYWZsX3yn5JVt6Q0quAeLRlQMNo8GJOZe3aPt9ZqjRzvMOiaCcYzJ6ThVcKIKQ==",
-  "_location": "/gdprx",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "gdprx@1.1.0",
-    "name": "gdprx",
-    "escapedName": "gdprx",
-    "rawSpec": "1.1.0",
-    "saveSpec": null,
-    "fetchSpec": "1.1.0"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/gdprx/-/gdprx-1.1.0.tgz",
-  "_shasum": "294e1590ac4e677a55cdf8487eb7028a2166d0d7",
-  "_spec": "gdprx@1.1.0",
-  "_where": "C:\\WEB\\WOPTIMA\\landing\\V2",
-  "author": {
-    "name": "Woptima"
-  },
-  "bugs": {
-    "url": "https://github.com/bux23/GDPRX/issues"
-  },
-  "bundleDependencies": false,
-  "deprecated": false,
-  "description": "GDPR compliant cookie bar",
-  "homepage": "https://github.com/bux23/GDPRX#readme",
-  "keywords": [
-    "GDPR"
-  ],
-  "license": "ISC",
-  "main": "dist/gdprx.js",
-  "name": "gdprx",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/bux23/GDPRX.git"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "version": "2.0.2"
+	"_from": "gdprx@1.2.0",
+	"_id": "gdprx@1.1.0",
+	"_inBundle": false,
+	"_integrity": "sha512-33N4PtuQC6V3c7Qo+mH4+XjtlYWZsX3yn5JVt6Q0quAeLRlQMNo8GJOZe3aPt9ZqjRzvMOiaCcYzJ6ThVcKIKQ==",
+	"_location": "/gdprx",
+	"_phantomChildren": {},
+	"_requested": {
+		"type": "version",
+		"registry": true,
+		"raw": "gdprx@1.1.0",
+		"name": "gdprx",
+		"escapedName": "gdprx",
+		"rawSpec": "1.1.0",
+		"saveSpec": null,
+		"fetchSpec": "1.1.0"
+	},
+	"_requiredBy": [
+		"#USER",
+		"/"
+	],
+	"_resolved": "https://registry.npmjs.org/gdprx/-/gdprx-1.1.0.tgz",
+	"_shasum": "294e1590ac4e677a55cdf8487eb7028a2166d0d7",
+	"_spec": "gdprx@1.1.0",
+	"_where": "C:\\WEB\\WOPTIMA\\landing\\V2",
+	"author": {
+		"name": "Woptima"
+	},
+	"bugs": {
+		"url": "https://github.com/bux23/GDPRX/issues"
+	},
+	"bundleDependencies": false,
+	"deprecated": false,
+	"description": "GDPR compliant cookie bar",
+	"homepage": "https://github.com/bux23/GDPRX#readme",
+	"keywords": [
+		"GDPR"
+	],
+	"license": "ISC",
+	"main": "dist/gdprx.js",
+	"name": "gdprx",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/bux23/GDPRX.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"version": "2.0.2"
 }

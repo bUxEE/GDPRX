@@ -1,7 +1,7 @@
 <html>
 	
 	<head>
-		<link rel="stylesheet" href="assets/pkgd/gdprx.css">
+		<link rel="stylesheet" href="dist/gdprx.css">
 	</head>
 
 	<body>
@@ -10,25 +10,23 @@
 		
 		<div class="cookie-title"></div>
 		<div class="cookie-subtitle"></div>
-	 	<div class="cookie-panel">
-	 		<div class="head">
-	 			<div class="swicth"></div>
-	 		</div>
-	 		<div class="body"></div>
-	 	</div>
+		<div class="cookie-panel">
+			<div class="head">
+				<div class="swicth"></div>
+			</div>
+			<div class="body"></div>
+		</div>
 		
 
 		</div>
 
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="assets/pkgd/gdprx.js"></script>
+	<script src="src/js/main.js"></script>
 
 	<script type="text/javascript">
-		jQuery(document).ready(function($) {
-		    var gdprx = new Gdprx();
-		    jQuery(document).on("gdprxAccepted", function() {
-			})
+
+		document.addEventListener("DOMContentLoaded", function() {
+			var gdprx = new Gdprx();
 		});
 
 

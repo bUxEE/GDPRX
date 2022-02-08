@@ -10,7 +10,7 @@
 export default class Gdprx {
 	
 	constructor(options) {
-		this.cookieName	= "gdprx";
+		this.cookieName = "gdprx";
 		this.gdprxValues = {
 			accepted: false,
 			cookiesAccepted: [],
@@ -56,7 +56,7 @@ export default class Gdprx {
 			}
 		}
 
-		jQuery.extend(true, this.config, options);
+		this.config = Object.assign({}, this.config, options);
 
 		this.watchers();
 		this.cookieGet();
@@ -90,7 +90,7 @@ export default class Gdprx {
 	}
 
 	createWindowCookieMethod() {
-	 	window.GdprxGetCookie = () => {
+		window.GdprxGetCookie = () => {
 			let cookieVal = this._getCookie('gdprx');
 			if(cookieVal != undefined) {
 				window.gdprxValues = JSON.parse(atob(cookieVal));
@@ -127,7 +127,7 @@ export default class Gdprx {
 			let output = '<div class="content-tab active" id="cont-policies">' +
 			'<div class="policies-title">' + this.config.labels.policies + '</div>';
 			policies.forEach((policy, index) => {
-				output +=   '<div class="cookie-panel">' +
+				output += '<div class="cookie-panel">' +
 				'<div class="head">' +
 				policy.title +
 				'<div class="switch"><div class="required-label">' + this.config.labels.required +'</div></div>' +
@@ -139,11 +139,11 @@ export default class Gdprx {
 				'</div>';
 			});
 
-			output += 	'</div>';
+			output +=   '</div>';
 			return output;
 		} else {
 			return;
-		}	
+		} 
 	}
 
 	createPoliciesLinks(policies) {
@@ -231,39 +231,38 @@ export default class Gdprx {
 
 	watchers() {
 		// accept
-		jQuery(document)
-		.on('click','#gdprx-bar button.accept', (e) => {
-			this.accept()
-		})
-		// preferences
-		.on('click','#gdprx-bar button.preferences', (e) => {
-			this.openModal();
-		})
-		.on('click','.gdprx-modal-opener', (e) => {
-			this.openModal();
-		})
-		// close modal
-		.on('click','#gdprx-modal .title .close', (e) => {
-			this.closeModal();
-		})
-		// save preferences
-		.on('click','#gdprx-modal .btn.save', (e) => {
-			this.savePreferences();
-		})
-		// tabs
-		.on('click','#gdprx-modal .cookies-nav li[data-content]', (e) => {
-			console.log("clicked");
-			let btn = jQuery(e.currentTarget);
-			let content = btn.attr('data-content');
-			jQuery('#gdprx-modal .cookies-nav > li, #gdprx-modal .content-tab').removeClass('active');
-			btn.addClass('active');
-			jQuery('#' + content).addClass('active');
-		});
-	}
-
-	appendModal() {
-		let modal = jQuery(this.modal);
-		modal.appendTo('body');
+		document.addEventListener('click', (e) => {
+				const element = e.target;
+				switch(true) {
+					case element.matches('#gdprx-bar button.accept'):
+						e.preventDefault();
+						this.accept()
+						break;
+					case element.matches('#gdprx-bar button.preferences'):
+						e.preventDefault();
+						this.openModal()
+						break;
+					case element.matches('.gdprx-modal-opener'):
+						e.preventDefault();
+						this.openModal()
+						break;
+					case element.matches('#gdprx-modal .title .close'):
+						e.preventDefault();
+						this.closeModal()
+						break;
+					case element.matches('#gdprx-modal .btn.save'):
+						e.preventDefault();
+						this.savePreferences()
+						break;
+					case element.matches('#gdprx-modal .cookies-nav li[data-content]'):
+						e.preventDefault();
+						let content = element.getAttribute('data-content');
+						document.querySelector('#gdprx-modal .cookies-nav > li, #gdprx-modal .content-tab').classList.remove('active');
+						element.classList.add('active');
+						document.querySelector('#' + content).classList.add('active');
+						break;
+				}
+			})
 	}
 
 	cookieSet() {
@@ -277,19 +276,25 @@ export default class Gdprx {
 		if(cookieVal != undefined) {
 			this.gdprxValues = JSON.parse(atob(cookieVal));
 		}
-		window.gdprxValues  = this.gdprxValues;
+		window.gdprxValues = this.gdprxValues;
+	}
+
+	appendModal() {
+		document.body.insertAdjacentHTML('beforeend', this.modal)
 	}
 
 	loadBar() {
-		let bar = jQuery(this.bar);
-		bar.appendTo('body');
+		document.body.insertAdjacentHTML('beforeend', this.bar)
 		setTimeout(() => {
-			bar.addClass('active')
+			document.getElementById('gdprx-bar').classList.add('active')
 		}, 300);
 	}
 
 	closeBar() {
-		jQuery('#gdprx-bar').removeClass('active'); 
+		let bar = document.getElementById('gdprx-bar');
+		if(bar && bar.classList.contains('active')) {
+			bar.classList.remove('active');
+		}
 	}
 
 	accept() {
@@ -297,29 +302,29 @@ export default class Gdprx {
 	}
 
 	openModal() {
-		let modal = jQuery('#gdprx-modal');
-		if(!modal.hasClass('active')) {
-			modal.addClass('visible');
+		let modal = document.getElementById('gdprx-modal');
+		if(modal && !modal.classList.contains('active')) {
+			modal.classList.add('visible');
 			setTimeout(() => {
-				modal.addClass('active');
+				modal.classList.add('active');
 			}, 100);
 		}
 	}
 
 	closeModal() {
-		if(jQuery('#gdprx-modal').length) {
-			let modal = jQuery('#gdprx-modal');
-			modal.removeClass('active');
+		let modal = document.getElementById("gdprx-modal");
+		if(modal) {
+			modal.classList.remove('active');
 			setTimeout(() => {
-				modal.removeClass('visible');
+				modal.classList.remove('visible');
 			}, 500);
 		}
 	}
 
 	savePreferences() {
-		this.gdprxValues.cookiesAccepted 	= [];
-		this.gdprxValues.cookiesDenied 	= [];
-		this.gdprxValues.accepted 			= true;
+		this.gdprxValues.cookiesAccepted = [];
+		this.gdprxValues.cookiesDenied = [];
+		this.gdprxValues.accepted = true;
 
 		this.config.cookie_groups.forEach((group, index) => {
 			if(group.required) {
@@ -327,10 +332,10 @@ export default class Gdprx {
 			}
 		});
 
-		jQuery('input.gdprx-cookie-check').each((index, el) => {
-			let check  = jQuery(el);
-			let group  = check.attr('data-group'); 
-			if(check.is(':checked')) {
+		let elements = document.querySelectorAll('input.gdprx-cookie-check');
+		elements.forEach((el,i) => {
+			let group = el.getAttribute('data-group'); 
+			if(el.checked) {
 				this.gdprxValues.cookiesAccepted.push(group);
 			} else {
 				this.gdprxValues.cookiesDenied.push(group);
@@ -345,12 +350,21 @@ export default class Gdprx {
 		this.closeModal();
 		this.closeBar();
 
-		jQuery(document).trigger("gdprxAccepted");
+		const event = new Event('gdprxAccepted');
+		document.dispatchEvent(event);
 	}
 
 	ajax() {
-		let data 	 = this.config.ajax.parameters;
+		let data = Object.assign({},this.config.ajax.parameters);
 		data["gdpr"] = this.gdprxValues;
-		jQuery.post( this.config.ajax.url, data );
+
+		fetch(this.config.ajax.url, {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		})
 	}
 }
