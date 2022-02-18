@@ -127,7 +127,7 @@ class Gdprx {
 			let output = '<div class="content-tab active" id="cont-policies">' +
 			'<div class="policies-title">' + this.config.labels.policies + '</div>';
 			policies.forEach((policy, index) => {
-				output += '<div class="cookie-panel">' +
+				output += '<div class="policies-panel">' +
 				'<div class="head">' +
 				policy.title +
 				'<div class="switch"><div class="required-label">' + this.config.labels.required +'</div></div>' +
@@ -205,7 +205,7 @@ class Gdprx {
 		'<div class="main-content">' +
 		'<div class="content-inner">' +
 		'<div class="title">' + this.config.labels.panel_title + '<div class="close">X</div></div>' +
-		'<div class="cookies">' +
+		'<div class="content-body">' +
 		'<div class="navs">' +
 		'<ul class="cookies-nav">' +
 		this.createPoliciesNav(this.config.policies) +
@@ -257,7 +257,12 @@ class Gdprx {
 					case element.matches('#gdprx-modal .cookies-nav li[data-content]'):
 						e.preventDefault();
 						let content = element.getAttribute('data-content');
-						document.querySelector('#gdprx-modal .cookies-nav > li, #gdprx-modal .content-tab').classList.remove('active');
+						let els = document.querySelectorAll('#gdprx-modal .cookies-nav li[data-content], #gdprx-modal .content .content-tab')
+						if(els && els.length) {
+							els.forEach(el => {
+								el.classList.remove('active');
+							})
+						}
 						element.classList.add('active');
 						document.querySelector('#' + content).classList.add('active');
 						break;

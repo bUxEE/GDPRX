@@ -258,7 +258,6 @@ export default class Gdprx {
 						e.preventDefault();
 						let content = element.getAttribute('data-content');
 						let els = document.querySelectorAll('#gdprx-modal .cookies-nav li[data-content], #gdprx-modal .content .content-tab')
-						console.log(els);
 						if(els && els.length) {
 							els.forEach(el => {
 								el.classList.remove('active');
