@@ -96,7 +96,7 @@ $app-colors: map-merge((
 				opacity: 1;
 			}
 		}
-		.cookies {
+		.content-body {
 			position: relative;
 			float: left;
 			width: 100%;
@@ -200,12 +200,12 @@ $app-colors: map-merge((
 						display: block;
 						opacity: 1;
 					}
-					.cookie-title {
+					.cookie-title, .policies-title {
 						font-size: 20px;
 						font-weight: 600;
 						margin-bottom: 15px;
 					}
-					.cookie-panel {
+					.cookie-panel, .policies-panel {
 						margin: 20px 0;
 						border: 1px solid #ccc;
 						.head {
@@ -386,11 +386,12 @@ $app-colors: map-merge((
 			.title {
 				height: auto;
 			}
-			.cookies .navs {
+			.content-body .navs {
 				width: 35%;
 			}
 		}
-		.cookies .content .content-tab .cookie-panel .head {
+		.content-body .content .content-tab .cookie-panel .head,
+		.content-body .content .content-tab .policies-panel .head {
 			display: flex;
 			flex-direction: column-reverse;
 			justify-content: flex-end;

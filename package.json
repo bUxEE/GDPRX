@@ -37,7 +37,7 @@
 		"GDPR"
 	],
 	"license": "ISC",
-	"main": "dist/gdprx.js",
+	"main": "dist/module/gdprx.js",
 	"name": "gdprx",
 	"repository": {
 		"type": "git",
