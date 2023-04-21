@@ -1,405 +1,423 @@
 $app-colors: () !default;
 $app-colors: map-merge((
-	"dark":    #222425,
-	"light":   #f1f1f1,
-	"blue":    #289dcc,
-	"orange":  #ff9c36,
-	"green":   #41b883,
-	"text":    #455561,
+  "dark":    #222425,
+  "light":   #f1f1f1,
+  "blue":    #289dcc,
+  "orange":  #ff9c36,
+  "green":   #41b883,
+  "text":    #455561,
 ), $app-colors);
 
 
 #gdprx-bar {
-	padding: 15px;
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	transition: all 500ms;
-	transform: translateY(120%);
-	background: rgba(47, 47, 47, 0.9);
-	z-index: 99997;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	&.active {
-		transform: translateY(0);
-	}
-	.content {
-		color: white;
-		padding: 0;
-		margin: 0;
-		line-height: 16px;
-		flex: 3;
-	}
-	.buttons {
-		text-align: right;
-		flex: 1;
-		white-space: nowrap;
-	}
+  padding: 15px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 500ms;
+  transform: translateY(120%);
+  background: rgba(47, 47, 47, 0.9);
+  z-index: 99997;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &.active {
+    transform: translateY(0);
+  }
+  .content {
+    color: white;
+    padding: 0;
+    margin: 0;
+    line-height: 16px;
+    flex: 3;
+  }
+  .buttons {
+    text-align: right;
+    flex: 1;
+    white-space: nowrap;
+  }
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #gdprx-modal {
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0; 
-	left: 0;
-	transition: all 250ms;
-	background: rgba(0,0,0,0.65);
-	z-index: 99998;
-	opacity: 0;
-	display: none;
-	pointer-events: none;
-	.main-content {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transition: all 600ms;
-		transform: translate(-50%, -55%);
-		max-height: calc(100vh - 50px);
-		max-width: calc(100vw - 50px);
-		width: 650px;
-		pointer-events: auto;
-		overflow: auto;
-		.content-inner {
-			color: white;
-			overflow-x: hidden;
-			overflow-y: auto;
-			width: 100%;
-			background: map-get($app-colors, 'dark');
-			z-index: 99999;
-		}
-		.title {
-			font-size: 26px;
-			line-height: 33px;
-			padding: 15px;
-			text-align: center;
-			background: map-get($app-colors, 'dark');
-			position: relative;
-			height: 65px;
-			.close {
-				position: absolute;
-				right: 0;
-				top: 0;
-				font-weight: 600;
-				font-size: 17px;
-				line-height: 30px;
-				width: 30px;
-				height: 30px;
-				cursor: pointer;
-				color: white;
-				opacity: 1;
-			}
-		}
-		.content-body {
-			position: relative;
-			float: left;
-			width: 100%;
-			display: flex;
-			align-content: stretch;
-			height: calc(100% - 65px);
-			box-sizing: border-box;
-			.navs {
-				width: 25%;
-				float: left;
-				display: flex;
-				flex-direction: column;
-				align-content: space-between;
-				justify-content: space-between;
-				ul {
-					list-style: none;
-					padding: 0;
-					margin: 0;
-					border: 0;
-					width: 100%;
-					li {
-						padding: 5px 10px;
-						font-size: 12px;
-						line-height: 12px;
-						width: 100%;
-						margin: 0;
-						a {
-							color: #ccc;
-							text-decoration: none;
-							font-style: italic;
-							text-align: center;
-							&:hover, &.active, &:focus {
-								color: white;
-							}
-						}
-					}
-					&.policies {
-						margin-bottom: 10px;
-						a {
-							text-align: left;
-						}
-					}
-					&.cookies-nav {
-						li {
-							color: white;
-							padding: 10px;
-							border-bottom: 1px solid white;
-							position: relative;
-							cursor: pointer;
-							background: lighten(map-get($app-colors, 'dark'), 3%);
-							text-align: left;
-							color: white;
-							font-size: 14px; 
-							line-height: 16px;
-							margin: 0;
-							&.active {
-								background: map-get($app-colors, 'blue');
-								color: white;
-								&:hover, &:focus {
-									color: white !important;
-								}
-								&:after {
-									right: 0;
-									border: 8px solid transparent;
-									content: '';
-									height: 0;
-									width: 0;
-									position: absolute;
-									pointer-events: none;
-									border-right-color: #f1f1f1;
-									top: 50%;
-									margin-top: -8px;
-								}
-							}
-							&:not(.list-title):hover, &:not(.list-title):focus {
-								color: map-get($app-colors, 'blue');
-							}
-						}
-					}
-					&.cookie-list {
-						li {
-							padding-left: 25px;
-							background: lighten(map-get($app-colors, 'dark'), 7%);
-						}
-					}
-				}
-			}
-			.content {
-				width: 75%;
-				float: left;
-				padding: 15px;
-				min-height: 400px;
-				background: lighten(map-get($app-colors, 'dark'), 3%);
-				position: relative;
-				color: map-get($app-colors, 'text');
-				margin: 0;
-				.content-tab {
-					display: none;
-					transition: all 150ms;
-					&.active {
-						display: block;
-						opacity: 1;
-					}
-					.cookie-title, .policies-title {
-						font-size: 20px;
-						font-weight: 600;
-						margin-bottom: 15px;
-					}
-					.cookie-panel, .policies-panel {
-						margin: 20px 0;
-						border: 1px solid #ccc;
-						.head {
-							padding: 10px;
-							background: map-get($app-colors, 'dark');
-							font-weight: 600;
-							display: inline-block;
-							width: 100%;
-							line-height: 21px;
-							.switch {
-								float: right;
-							}
-						}
-						.body {
-							padding: 10px;
-							border: none;
-							margin: 0;
-							border-radius: 0;
-							background: lighten(map-get($app-colors, 'dark'), 7%);
-							border-top: 1px solid #ccc;
-						}
-					}
-				}
-				.buttons {
-					text-align: right;
-				}
-			}
-		}
-	}
-	&.visible {
-		display: block;
-	}
-	&.active {
-		opacity: 1;
-		.main-content {
-			transform: translate(-50%, -50%);
-			opacity: 1;
-		}
-	}
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0; 
+  left: 0;
+  transition: all 250ms;
+  background: rgba(0,0,0,0.65);
+  z-index: 99998;
+  opacity: 0;
+  display: none;
+  pointer-events: none;
+  .main-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all 600ms;
+    transform: translate(-50%, -55%);
+    max-height: calc(100vh - 50px);
+    max-width: calc(100vw - 50px);
+    width: 650px;
+    pointer-events: auto;
+    overflow: auto;
+    .content-inner {
+      color: white;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 100%;
+      background: map-get($app-colors, 'dark');
+      z-index: 99999;
+    }
+    .title {
+      font-size: 26px;
+      line-height: 33px;
+      padding: 15px;
+      text-align: center;
+      background: map-get($app-colors, 'dark');
+      position: relative;
+      height: 65px;
+      .close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-weight: 600;
+        font-size: 17px;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        color: white;
+        opacity: 1;
+      }
+    }
+    .content-body {
+      position: relative;
+      float: left;
+      width: 100%;
+      display: flex;
+      align-content: stretch;
+      height: calc(100% - 65px);
+      box-sizing: border-box;
+      .navs {
+        width: 25%;
+        float: left;
+        display: flex;
+        flex-direction: column;
+        align-content: space-between;
+        justify-content: space-between;
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          border: 0;
+          width: 100%;
+          li {
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 12px;
+            width: 100%;
+            margin: 0;
+            a {
+              color: #ccc;
+              text-decoration: none;
+              font-style: italic;
+              text-align: center;
+              &:hover, &.active, &:focus {
+                color: white;
+              }
+            }
+          }
+          &.policies {
+            margin-bottom: 10px;
+            a {
+              text-align: left;
+            }
+          }
+          &.cookies-nav {
+            li {
+              color: white;
+              padding: 10px;
+              border-bottom: 1px solid white;
+              position: relative;
+              cursor: pointer;
+              background: lighten(map-get($app-colors, 'dark'), 3%);
+              text-align: left;
+              color: white;
+              font-size: 14px; 
+              line-height: 16px;
+              margin: 0;
+              &.active {
+                background: map-get($app-colors, 'blue');
+                color: white;
+                &:hover, &:focus {
+                  color: white !important;
+                }
+                &:after {
+                  right: 0;
+                  border: 8px solid transparent;
+                  content: '';
+                  height: 0;
+                  width: 0;
+                  position: absolute;
+                  pointer-events: none;
+                  border-right-color: #f1f1f1;
+                  top: 50%;
+                  margin-top: -8px;
+                }
+              }
+              &:not(.list-title):hover, &:not(.list-title):focus {
+                color: map-get($app-colors, 'blue');
+              }
+            }
+          }
+          &.cookie-list {
+            li {
+              padding-left: 25px;
+              background: lighten(map-get($app-colors, 'dark'), 7%);
+            }
+          }
+        }
+      }
+      .content {
+        width: 75%;
+        float: left;
+        padding: 15px;
+        min-height: 400px;
+        background: lighten(map-get($app-colors, 'dark'), 3%);
+        position: relative;
+        color: map-get($app-colors, 'text');
+        margin: 0;
+        .content-tab {
+          display: none;
+          transition: all 150ms;
+          &.active {
+            display: block;
+            opacity: 1;
+          }
+          .cookie-title, .policies-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+          }
+          .cookie-panel, .policies-panel {
+            margin: 20px 0;
+            border: 1px solid #ccc;
+            .head {
+              padding: 10px;
+              background: map-get($app-colors, 'dark');
+              font-weight: 600;
+              display: inline-block;
+              width: 100%;
+              line-height: 21px;
+              .switch {
+                float: right;
+              }
+            }
+            .body {
+              padding: 10px;
+              border: none;
+              margin: 0;
+              border-radius: 0;
+              background: lighten(map-get($app-colors, 'dark'), 7%);
+              border-top: 1px solid #ccc;
+            }
+          }
+        }
+        .buttons {
+          text-align: right;
+        }
+      }
+    }
+  }
+  &.visible {
+    display: block;
+  }
+  &.active {
+    opacity: 1;
+    .main-content {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+    }
+  }
 }
 
 .gdprx {
-	font-family: "Verdana";
-	font-size: 14px;
-	line-height: 1.2rem;
-	.buttons {
-		button, a {
-			background: transparent;
-			outline: none;
-			padding: 5px 10px;	    
-			border-radius: 4px;
-			cursor: pointer;
-			margin: 7px;
-			transition: all 150ms;
-			text-decoration: none;
-			height: auto;
-			line-height: 16px;
-			font-size: 14px;
-			&.preferences {
-				border: 1px solid map-get($app-colors, 'blue');
-				background: map-get($app-colors, 'blue');
-				color: white;
-				&:hover, &:active {
-					background: lighten(map-get($app-colors, 'blue'), 15%);
-				}
-			} 
-			&.view {
-				border: 1px solid map-get($app-colors, 'orange');
-				background: map-get($app-colors, 'orange');
-				color: white;
-				padding: 3px 7px;
-				margin-right: 0;
-				&:hover, &:active {
-					background: lighten(map-get($app-colors, 'orange'), 15%);
-				}
-			}
-			&.accept, &.save {
-				border: 1px solid map-get($app-colors, 'green');
-				background: map-get($app-colors, 'green');
-				color: white;
-				&:hover, &:active {
-					background: lighten(map-get($app-colors, 'green'), 15%);
-				}
-			}
-		}
-	}
-	.required-label {
-		background: map-get($app-colors, 'blue');
-		color: white;
-		padding: 5px 10px;
-		border-radius: 30px;
-		display: inline-block;
-		font-size: 12px;
-		line-height: 14px;
-	}
-	.gdprx-switch {
-		position: relative;
-		display: inline-block;
-		min-width: 45px;
-		height: 24px;
-		margin: 0;
-		.gdpr-slider {
-			position: absolute;
-			cursor: pointer;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background-color: #ccc;
-			transition: .4s;
-			&.round {
-				border-radius: 34px;
-				&:before {
-					border-radius: 50%;
-				}
-			}
-			&:before {
-				position: absolute;
-				content: "";
-				height: 16px;
-				width: 16px;
-				left: 4px;
-				bottom: 4px;
-				background-color: white;
-				-webkit-transition: .4s;
-				-o-transition: .4s;
-				transition: .4s;
-			}
-		}
-		.gdpr-switch-indicator, 
-		.gdpr-switch-indicator-on,
-		.gdpr-switch-indicator-off, 
-		input:checked+.gdpr-slider+.gdpr-switch-indicator-on, 
-		input:checked+.gdpr-slider+.gdpr-switch-indicator-on+.gdpr-switch-indicator-off {
-			position: absolute;
-			bottom: 2px;
-			right: 50px;
-			color: #ccc;
-		}
-		.gdpr-switch-indicator-on {
-			display: none;
-		}
-		input {
-			display: none;
-			&:checked+.gdpr-slider {
-				background-color: map-get($app-colors, 'blue');
-				&:before {
-					transform: translateX(21px);
-				}
-			}
-			&:checked+.gdpr-slider+.gdpr-switch-indicator-on {
-				color: map-get($app-colors, 'blue');
-				display: block;
-			}
-			&:checked+.gdpr-slider+.gdpr-switch-indicator-on+.gdpr-switch-indicator-off {
-				display: none;
-			}
-		} 
-	}
+  font-family: "Verdana";
+  font-size: 14px;
+  line-height: 1.2rem;
+  .buttons {
+    button, a {
+      background: transparent;
+      outline: none;
+      padding: 5px 10px;      
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 7px;
+      transition: all 150ms;
+      text-decoration: none;
+      height: auto;
+      line-height: 16px;
+      font-size: 14px;
+      &.preferences {
+        border: 1px solid map-get($app-colors, 'blue');
+        background: map-get($app-colors, 'blue');
+        color: white;
+        &:hover, &:active {
+          background: lighten(map-get($app-colors, 'blue'), 15%);
+        }
+      } 
+      &.view {
+        border: 1px solid map-get($app-colors, 'orange');
+        background: map-get($app-colors, 'orange');
+        color: white;
+        padding: 3px 7px;
+        margin-right: 0;
+        &:hover, &:active {
+          background: lighten(map-get($app-colors, 'orange'), 15%);
+        }
+      }
+      &.accept, &.save {
+        border: 1px solid map-get($app-colors, 'green');
+        background: map-get($app-colors, 'green');
+        color: white;
+        &:hover, &:active {
+          background: lighten(map-get($app-colors, 'green'), 15%);
+        }
+      }
+    }
+  }
+  .required-label {
+    background: map-get($app-colors, 'blue');
+    color: white;
+    padding: 5px 10px;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .gdprx-switch {
+    position: relative;
+    display: inline-block;
+    min-width: 45px;
+    height: 24px;
+    margin: 0;
+    .gdpr-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      &.round {
+        border-radius: 34px;
+        &:before {
+          border-radius: 50%;
+        }
+      }
+      &:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .4s;
+        -o-transition: .4s;
+        transition: .4s;
+      }
+    }
+    .gdpr-switch-indicator, 
+    .gdpr-switch-indicator-on,
+    .gdpr-switch-indicator-off, 
+    input:checked+.gdpr-slider+.gdpr-switch-indicator-on, 
+    input:checked+.gdpr-slider+.gdpr-switch-indicator-on+.gdpr-switch-indicator-off {
+      position: absolute;
+      bottom: 2px;
+      right: 50px;
+      color: #ccc;
+    }
+    .gdpr-switch-indicator-on {
+      display: none;
+    }
+    input {
+      display: none;
+      &:checked+.gdpr-slider {
+        background-color: map-get($app-colors, 'blue');
+        &:before {
+          transform: translateX(21px);
+        }
+      }
+      &:checked+.gdpr-slider+.gdpr-switch-indicator-on {
+        color: map-get($app-colors, 'blue');
+        display: block;
+      }
+      &:checked+.gdpr-slider+.gdpr-switch-indicator-on+.gdpr-switch-indicator-off {
+        display: none;
+      }
+    } 
+  }
 }
 
 @media only screen and (max-width: 768px) {
-	#gdprx-bar {
-		flex-direction: column;
-		.content {
-			display: block;
-			width: 100%;
-		}
-		.buttons {
-			display: block;
-			width: 100%;
-			text-align: center;
-			margin-top: 7px;
-		}
-	}
-	#gdprx-modal {
-		.main-content {
-			.title {
-				height: auto;
-			}
-			.content-body .navs {
-				width: 35%;
-			}
-		}
-		.content-body .content .content-tab .cookie-panel .head,
-		.content-body .content .content-tab .policies-panel .head {
-			display: flex;
-			flex-direction: column-reverse;
-			justify-content: flex-end;
-			.switch {
-				align-self: flex-end;
-				margin: -10px -15px 0 0;
-				transform: scale(0.7);
-			}
-		}
-	}
+  #gdprx-bar {
+    flex-direction: column;
+    .content {
+      display: block;
+      width: 100%;
+    }
+    .buttons {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 7px;
+    }
+  }
+  #gdprx-modal {
+    .main-content {
+      .title {
+        height: auto;
+      }
+      .content-body .navs {
+        width: 35%;
+      }
+    }
+    .content-body .content .content-tab .cookie-panel .head,
+    .content-body .content .content-tab .policies-panel .head {
+      display: flex;
+      flex-direction: column-reverse;
+      justify-content: flex-end;
+      .switch {
+        align-self: flex-end;
+        margin: -10px -15px 0 0;
+        transform: scale(0.7);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  #gdprx-modal {
+    .main-content {
+      .content-body {
+        flex-direction: column;
+        > .navs, > .content {
+          width: 100%;
+        }
+        > .content {
+          height: 100%;
+          overflow: auto;
+          min-height: 0;
+        }
+      }
+    }
+  }
 }
